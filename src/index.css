@@ -14,9 +14,10 @@
 }
 #root{
   background-color:transparent;
-  width:690px;
-  background-image:url(./assets/waterColorVisual.png);
-  height:350px;
+  width:860px;
+  background-image:url(./assets/Picture3.png);
+  background-size:cover;
+  height:800px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -34,7 +35,8 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  flex-direction:column;
+  align-items: center;
   justify-content:center;
   min-width: 320px;
   min-height: 100vh;
@@ -46,7 +48,7 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 10rem;
   line-height: 1.1;
 }
 
