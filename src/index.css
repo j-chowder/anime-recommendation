@@ -50,6 +50,9 @@ body {
 h1 {
   font-size: 10rem;
   line-height: 1.1;
+  color: black;
+  -webkit-text-fill-color: #FFB269;
+  -webkit-text-stroke: 1px;
 }
 
 button {
