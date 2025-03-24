@@ -3,8 +3,6 @@ import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
 const Input = styled.input`
     padding: 0.8em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
     color: black;
     background: papayawhip;
     border: solid;
@@ -12,6 +10,10 @@ const Input = styled.input`
     border-top-left-radius:6px;
     border-bottom-left-radius:6px;
     border-right:0;
+    display: inline-block; 
+  box-sizing: border-box;
+  flex-grow:2;
+  flex-basis:500px;
 `;
 const Form = styled.form`
   align-items: center;
@@ -30,7 +32,7 @@ export default function InputBar(){
     return (
         
         <Form id = "search" method = "POST">
-         <Input aria-label = "Search" type = "search" name = "s" defaultValue = "" />
+         <Input aria-label = "Search" type = "search" name = "s" defaultValue = "" contentEditable = "true" />
          <SearchButton>
            <svg style = {{maxWidth: '24px', maxHeight: '24px'}}>
            <path d=

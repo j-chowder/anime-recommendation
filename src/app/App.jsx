@@ -3,12 +3,14 @@ import {styled} from 'styled-components';
 import Picture2 from '../assets/Picture2.png';
 import InputBar from '../features/Search/InputBar.jsx'
 import DropDown from '../features/DropDown/DropDown.jsx';
+import HeaderLine from '../features/Header/HeaderLine.jsx';
 
 const Wrapper = styled.div`
  display:flex;
  flex-direction:column;
  align-items:center;
  justify-content:center;
+ gap:8px;
 `
 const Image = styled.img`
 border:solid;
@@ -19,14 +21,9 @@ height:auto;
 function App() {
     return(
         <Wrapper>
-            <div>
-            <a>Input your </a>
-            <a>arnostearnst </a>
-            <a>Here!</a>
-            </div>
-        <DropDown />
-        <InputBar />
-        <Image src = {Picture2} alt = "none" />
+         <DropDown />
+         <InputBar />
+         <Image src = {Picture2} alt = "none" />
         </Wrapper>
     )
 
