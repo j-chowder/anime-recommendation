@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
+import { Form, useActionData } from 'react-router-dom';
 const Input = styled.input`
     padding: 0.8em;
     color: black;
@@ -15,24 +16,32 @@ const Input = styled.input`
   flex-grow:2;
   flex-basis:500px;
 `;
-const Form = styled.form`
-  align-items: center;
-  display: flex;
-  max-width: 600px;
-  width: 100%;
-  max-height:40px;
-`;
-export default function InputBar(){
- 
-    // const handleChange = (e) => {
-    //     setQuery(e.target.value);
-    // }
-   
-
+// const Form = styled.Form`
+//   align-items: center;
+//   display: flex;
+//   max-width: 600px;
+//   width: 100%;
+//   max-height:40px;
+// `;
+export default function InputBar({value}){
+  
+  let defValue = "";
+  switch(value){
+  case "Genre":
+    defValue = "e.g. Slice of Life"
+    break;
+  case "Anime":
+    defValue = "e.g. Fruits Basket"
+    break;
+  case "MyAnimeList":
+    defValue = "e.g. https://myanimelist.net/profile/MAL_editing_team"
+    break;    
+} 
+    
     return (
         
-        <Form id = "search" method = "POST">
-         <Input aria-label = "Search" type = "search" name = "s" defaultValue = "" contentEditable = "true" />
+        <Form id = "search" method = "POST" action = "/">
+         <Input aria-label = "Search" type = "search" name = "s" placeholder = {defValue} contentEditable = "true" />
          <SearchButton>
            <svg style = {{maxWidth: '24px', maxHeight: '24px'}}>
            <path d=
@@ -40,6 +49,7 @@ export default function InputBar(){
            <path d="M0 0h24v24H0z" fill="none" />
           </svg>
         </SearchButton>
+         {data && data.error && <p>{data.error}</p>}
         </Form>
         
         
@@ -47,4 +57,17 @@ export default function InputBar(){
     
 
 
+}
+export const searchAction = async ({ request }) => {
+  const data = await request.formData();
+  const submission = {
+    search: data.get("s"),
+    category: value
+  }
+  console.log(submission);
+  if(submission.search.length < 10){
+    return {error: 'Message must be over 10 chars long'}
+  }
+
+  return redirect('/test')
 }

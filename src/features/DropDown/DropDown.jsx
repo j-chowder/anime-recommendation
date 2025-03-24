@@ -4,9 +4,8 @@ import DropDownList from "./DropDownList";
 import DropDownItem from "./DropDownItem";
 import {useState, useEffect, useRef} from 'react';
 
-export default function DropDown(){
+export default function DropDown({value, setInputValue}){
 const [open, setOpen] = useState(false);
-const [value, setValue] = useState('-Select-');
 const ref = useRef(null);
 
 useEffect(() => {
@@ -26,9 +25,7 @@ useEffect(() => {
 function toggleOpen() {
     setOpen(!open);
 }
-function setInputValue(val) {
-    setValue(val);
-}
+
     
 return (
         <div style = {{position: 'relative'}} ref = {ref}>
