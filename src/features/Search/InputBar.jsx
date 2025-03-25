@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
-import { Form, useActionData } from 'react-router-dom';
+// import { Form, useActionData } from 'react-router-dom';
 const Input = styled.input`
     padding: 0.8em;
     color: black;
@@ -11,22 +11,27 @@ const Input = styled.input`
     border-top-left-radius:6px;
     border-bottom-left-radius:6px;
     border-right:0;
+    -webkit-appearance: none;
     display: inline-block; 
   box-sizing: border-box;
   flex-grow:2;
   flex-basis:500px;
+  max-height:40px;
+  height:100%;
+  outline: none;
 `;
-// const Form = styled.Form`
-//   align-items: center;
-//   display: flex;
-//   max-width: 600px;
-//   width: 100%;
-//   max-height:40px;
-// `;
+const Form = styled.form`
+  align-items: center;
+  display: flex;
+  max-width: 600px;
+  width: 100%;
+  max-height:40px;
+  height:100%;
+`;
 export default function InputBar({value}){
   
   let defValue = "";
-  switch(value){
+switch(value){
   case "Genre":
     defValue = "e.g. Slice of Life"
     break;
@@ -49,7 +54,7 @@ export default function InputBar({value}){
            <path d="M0 0h24v24H0z" fill="none" />
           </svg>
         </SearchButton>
-         {data && data.error && <p>{data.error}</p>}
+         {/* {data && data.error && <p>{data.error}</p>} */}
         </Form>
         
         

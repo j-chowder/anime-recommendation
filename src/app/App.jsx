@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import {styled} from 'styled-components';
-import Picture2 from '../assets/Picture2.png';
 import InputBar from '../features/Search/InputBar.jsx'
 import DropDown from '../features/DropDown/DropDown.jsx';
+import TitleAndImage from '../features/HomepageHeader/TitleAndImage.jsx';
+import Container from '../features/BackgroundGraphic/Watercolor.jsx';
+import HeaderLine from '../features/Header/HeaderLine.jsx';
+import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
  display:flex;
@@ -12,25 +15,32 @@ const Wrapper = styled.div`
  gap:8px;
  min-width:800px;
 `
-const Image = styled.img`
-border:solid;
-width:100px;
-height:auto;
+const HeaderWrapper = styled.div`
+display:flex; 
+justify-content: center; 
+align-items:center; 
+margin-top:20px;
 `
 
 function App() {
     const [value, setValue] = useState('-Select-');
-    const data = useActionData()
     function setInputValue(val) {
         setValue(val);
     }
-
     return(
-        <Wrapper>
+        <>
+        <HeaderWrapper>
+           <TitleAndImage />
+        </HeaderWrapper>
+        <HeaderLine />
+    <Container>
+     <Wrapper>
          <DropDown value = {value} setInputValue={setInputValue} />
          <InputBar value = {value} />
-         <Image src = {Picture2} alt = "none" />
-        </Wrapper>
+         <Link to="/test">Test Page</Link>
+     </Wrapper>
+    </Container>
+        </>
     )
 
 }

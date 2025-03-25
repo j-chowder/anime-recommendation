@@ -3,6 +3,7 @@ import {styled} from 'styled-components';
 const Content = styled.div`
    position:absolute;
    border-radius: 10px;
+   border-top-left-radius: 4px;
    border:solid;
    border-color:gray;
    background-color:white;
@@ -20,8 +21,9 @@ export default function DropDownContent({open, children}){
   else{
     return (
         <Content style = {{
-            display:'hidden'
+            display:'none'
         }} />
+        
     )
   }
  
