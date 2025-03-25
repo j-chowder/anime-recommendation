@@ -1,6 +1,7 @@
 import {styled} from 'styled-components';
 import DropDownItemButton from './DropDownItemButton';
 
+
 const Item = styled.li`
 padding-block:3px;
 padding-inline: calc(var(--spacing) * 3);
@@ -11,10 +12,11 @@ padding-bottom: 8px;
 display:flex;
 align-items:center;
 `
-export default function DropDownItem({children, setInputValue, toggleOpen}){
+export default function DropDownItem({children, toggleOpen}){
+
     return ( 
         <Item>
-            <DropDownItemButton setInputValue={setInputValue} toggleOpen = {toggleOpen}>{children}</DropDownItemButton>
+            <DropDownItemButton toggleOpen = {toggleOpen}>{children}</DropDownItemButton>
         </Item>
     )
 }

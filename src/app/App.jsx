@@ -1,10 +1,10 @@
-import { useState } from 'react';
 import {styled} from 'styled-components';
 import InputBar from '../features/Search/InputBar.jsx'
 import DropDown from '../features/DropDown/DropDown.jsx';
 import TitleAndImage from '../features/HomepageHeader/TitleAndImage.jsx';
 import Container from '../features/BackgroundGraphic/Watercolor.jsx';
 import HeaderLine from '../features/Header/HeaderLine.jsx';
+import CategoryValueProvider from './Context/CategoryValueContext.jsx';
 import { Link } from 'react-router-dom';
 
 const Wrapper = styled.div`
@@ -22,25 +22,25 @@ align-items:center;
 margin-top:20px;
 `
 
+
 function App() {
-    const [value, setValue] = useState('-Select-');
-    function setInputValue(val) {
-        setValue(val);
-    }
+    
     return(
-        <>
-        <HeaderWrapper>
-           <TitleAndImage />
-        </HeaderWrapper>
+    <>
+    <HeaderWrapper>
+        <TitleAndImage />
+    </HeaderWrapper>
+    <CategoryValueProvider>
         <HeaderLine />
     <Container>
      <Wrapper>
-         <DropDown value = {value} setInputValue={setInputValue} />
-         <InputBar value = {value} />
+         <DropDown />
+         <InputBar />
          <Link to="/test">Test Page</Link>
      </Wrapper>
     </Container>
-        </>
+    </CategoryValueProvider>
+    </>
     )
 
 }

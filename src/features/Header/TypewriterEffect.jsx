@@ -1,14 +1,19 @@
-import {useState, useEffect, useMemo} from 'react';
+import {useState, useEffect, useMemo, useContext} from 'react';
+import { categoryValueContext } from '../../app/Context/CategoryValueContext';
 
 export const useTypewriter = (text, speed = 20) => {
+const {category} = useContext(categoryValueContext);
     const [index, setIndex] = useState(0);
     const [done, setDone] = useState(false);
     const [arrayIndex, setArrayIndex] = useState(0);
     let displayText = "";
     displayText += useMemo(() => text[arrayIndex].slice(0, index), [index]);
 
-    
     useEffect(() => {
+      if(category != "-Select-"){
+        setDone(null);
+        return;
+      }
       if(!done){
         if (index >= text[arrayIndex].length){
             setTimeout(() => {
@@ -53,9 +58,14 @@ export const useTypewriter = (text, speed = 20) => {
      
     }, [index, text, speed]);
 
+    if(done === null){
+      return `Recommend anime based on ${category.toLowerCase()}.`
+    }
+
     if(arrayIndex >= 1){
         return `Recommend anime based on${displayText}`
     }
+    console.log(displayText);
 
     return displayText;
   

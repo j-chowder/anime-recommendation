@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useContext } from 'react';
+import { categoryValueContext } from '../../app/Context/CategoryValueContext.jsx';
 import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
 // import { Form, useActionData } from 'react-router-dom';
@@ -28,17 +29,18 @@ const Form = styled.form`
   max-height:40px;
   height:100%;
 `;
-export default function InputBar({value}){
-  
+export default function InputBar(){
+  const {category} = useContext(categoryValueContext);
+
   let defValue = "";
-switch(value){
+switch(category){
   case "Genre":
     defValue = "e.g. Slice of Life"
     break;
   case "Anime":
     defValue = "e.g. Fruits Basket"
     break;
-  case "MyAnimeList":
+  case "User":
     defValue = "e.g. https://myanimelist.net/profile/MAL_editing_team"
     break;    
 } 

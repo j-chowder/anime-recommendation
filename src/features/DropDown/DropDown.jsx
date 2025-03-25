@@ -4,7 +4,7 @@ import DropDownList from "./DropDownList";
 import DropDownItem from "./DropDownItem";
 import {useState, useEffect, useRef} from 'react';
 
-export default function DropDown({value, setInputValue}){
+export default function DropDown(){
 const [open, setOpen] = useState(false);
 const ref = useRef(null);
 
@@ -29,12 +29,12 @@ function toggleOpen() {
     
 return (
         <div style = {{position: 'relative'}} ref = {ref}>
-        <DropDownButton open = {open} toggleOpen = {toggleOpen} value = {value} />
+        <DropDownButton open = {open} toggleOpen = {toggleOpen} />
         <DropDownContent open = {open}>
             <DropDownList>
-                <DropDownItem setInputValue = {setInputValue} toggleOpen = {toggleOpen}>Anime</DropDownItem>
-                <DropDownItem setInputValue = {setInputValue} toggleOpen = {toggleOpen}>Genre</DropDownItem>
-                <DropDownItem setInputValue = {setInputValue} toggleOpen = {toggleOpen}>MyAnimeList</DropDownItem>
+                <DropDownItem toggleOpen = {toggleOpen}>Anime</DropDownItem>
+                <DropDownItem toggleOpen = {toggleOpen}>Genre</DropDownItem>
+                <DropDownItem toggleOpen = {toggleOpen}>User</DropDownItem>
             </DropDownList>
         </DropDownContent>
         </div>

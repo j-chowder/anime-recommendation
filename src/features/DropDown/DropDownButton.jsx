@@ -1,4 +1,5 @@
-import {useState} from 'react';
+import {useContext} from 'react';
+import {categoryValueContext } from '../../app/Context/CategoryValueContext.jsx';
 import {styled} from 'styled-components';
 import Arrow from './Arrow.jsx'
 const Button = styled.button`
@@ -11,11 +12,11 @@ const Button = styled.button`
   gap:15px;
 `
 
-export default function DropDownButton({open, toggleOpen, value}){
-  
+export default function DropDownButton({open, toggleOpen}){
+  const {category} = useContext(categoryValueContext)
     return (
         <Button onClick = {toggleOpen}> 
-        {value} 
+        {category} 
         <Arrow open = {open} />
         </Button>
     )
