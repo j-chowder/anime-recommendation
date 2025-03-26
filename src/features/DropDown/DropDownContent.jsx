@@ -1,6 +1,6 @@
 import {styled} from 'styled-components';
 
-const Content = styled.div`
+export const Content = styled.div`
    position:absolute;
    border-radius: 10px;
    border-top-left-radius: 4px;

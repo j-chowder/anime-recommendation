@@ -65,7 +65,6 @@ const {category} = useContext(categoryValueContext);
     if(arrayIndex >= 1){
         return `Recommend anime based on${displayText}`
     }
-    console.log(displayText);
 
     return displayText;
   

@@ -1,8 +1,9 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { categoryValueContext } from '../../app/Context/CategoryValueContext.jsx';
 import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
-// import { Form, useActionData } from 'react-router-dom';
+import SearchDropdown from './Dropdown/SearchDropdown.jsx';
+import { useNavigate } from 'react-router-dom';
 const Input = styled.input`
     padding: 0.8em;
     color: black;
@@ -20,6 +21,8 @@ const Input = styled.input`
   max-height:40px;
   height:100%;
   outline: none;
+  font-family: "Lora";
+  font-size:20px;
 `;
 const Form = styled.form`
   align-items: center;
@@ -29,26 +32,42 @@ const Form = styled.form`
   max-height:40px;
   height:100%;
 `;
+
 export default function InputBar(){
   const {category} = useContext(categoryValueContext);
+  const navigate = useNavigate();
+  const [query, setQuery] = useState('');
 
   let defValue = "";
-switch(category){
-  case "Genre":
-    defValue = "e.g. Slice of Life"
-    break;
-  case "Anime":
-    defValue = "e.g. Fruits Basket"
-    break;
-  case "User":
-    defValue = "e.g. https://myanimelist.net/profile/MAL_editing_team"
-    break;    
-} 
-    
+  switch(category){
+    case "Genre":
+      defValue = "e.g. Slice of Life"
+      break;
+    case "Anime":
+      defValue = "e.g. Fruits Basket"
+      break;
+    case "User":
+      defValue = "e.g. https://myanimelist.net/profile/MAL_editing_team"
+      break;    
+  } 
+
+const handleChange = (e) => {
+  try{
+    setQuery(e.target.value);
+  }
+  catch(error){
+    setQuery(e);
+  }
+}
+const search = (formData) => {
+  const input = formData.get("s");
+  console.log(input);
+  navigate("/test");
+}
     return (
-        
-        <Form id = "search" method = "POST" action = "/">
-         <Input aria-label = "Search" type = "search" name = "s" placeholder = {defValue} contentEditable = "true" />
+        <>
+        <Form id = "search" autoComplete = "off" action = {search}>
+         <Input aria-label = "Search" type = "search" name = "s" placeholder = {defValue} contentEditable = "true" onChange = {handleChange} value = {query} />
          <SearchButton>
            <svg style = {{maxWidth: '24px', maxHeight: '24px'}}>
            <path d=
@@ -56,25 +75,25 @@ switch(category){
            <path d="M0 0h24v24H0z" fill="none" />
           </svg>
         </SearchButton>
-         {/* {data && data.error && <p>{data.error}</p>} */}
-        </Form>
-        
+        </Form> 
+
+        <SearchDropdown query = {query} handleChange = {handleChange} />
+
+        </>
         
     )
     
-
-
 }
-export const searchAction = async ({ request }) => {
-  const data = await request.formData();
-  const submission = {
-    search: data.get("s"),
-    category: value
-  }
-  console.log(submission);
-  if(submission.search.length < 10){
-    return {error: 'Message must be over 10 chars long'}
-  }
-
-  return redirect('/test')
-}
+// export const searchAction = async ({ request }) => {
+//   console.log("herro" + response)
+//   const data = await request.formData();
+//   const submission = {
+//     search: data.get("s"),
+//     category: value
+//   }
+//   console.log("herro " + submission);
+//   if(submission.search.length < 10){
+//     return {error: 'Message must be over 10 chars long'}
+//   }
+//   return redirect('/test')
+// }

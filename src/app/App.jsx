@@ -36,7 +36,6 @@ function App() {
      <Wrapper>
          <DropDown />
          <InputBar />
-         <Link to="/test">Test Page</Link>
      </Wrapper>
     </Container>
     </CategoryValueProvider>
