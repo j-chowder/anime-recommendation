@@ -7,8 +7,8 @@ const Dropdown = styled.div`
  border-radius:10px;
  flex-direction:column;
  border: 1px solid gray;
-max-width:600px;
-width:100%;
+ max-width:600px;
+ width:100%;
  :empty{
  border:none;
  }

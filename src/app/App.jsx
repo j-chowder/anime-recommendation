@@ -1,9 +1,9 @@
 import {styled} from 'styled-components';
-import InputBar from '../features/Search/InputBar.jsx'
-import DropDown from '../features/DropDown/DropDown.jsx';
-import TitleAndImage from '../features/HomepageHeader/TitleAndImage.jsx';
-import Container from '../features/BackgroundGraphic/Watercolor.jsx';
-import HeaderLine from '../features/Header/HeaderLine.jsx';
+import InputBar from '../homepageFeatures/Search/InputBar.jsx'
+import DropDown from '../homepageFeatures/DropDown/DropDown.jsx';
+import TitleAndImage from '../homepageFeatures/HomepageHeader/TitleAndImage.jsx';
+import Container from '../homepageFeatures/BackgroundGraphic/Watercolor.jsx';
+import HeaderLine from '../homepageFeatures/Header/HeaderLine.jsx';
 import CategoryValueProvider from './Context/CategoryValueContext.jsx';
 import { Link } from 'react-router-dom';
 
