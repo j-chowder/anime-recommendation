@@ -33,12 +33,11 @@ const Form = styled.form`
   height:100%;
 `;
 
-export default function InputBar(){
+export default function InputBar({defValue = ""}){
   const {category} = useContext(categoryValueContext);
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
 
-  let defValue = "";
   switch(category){
     case "Genre":
       defValue = "e.g. Slice of Life"
@@ -76,7 +75,6 @@ const search = (formData) => {
           </svg>
         </SearchButton>
         </Form> 
-
         <SearchDropdown query = {query} handleChange = {handleChange} />
 
         </>

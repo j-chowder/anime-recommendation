@@ -9,11 +9,18 @@ const Dropdown = styled.div`
  border: 1px solid gray;
  max-width:600px;
  width:100%;
+ position:relative;
  :empty{
  border:none;
  }
 
  }
+`
+const Container = styled.div`
+ position: absolute;
+ display:flex;
+ flex-direction:column;
+ gap:0;
 `
 
 
@@ -25,6 +32,7 @@ export default function SearchDropdown({query, handleChange}){
 
     return(
     <Dropdown>
+      <Container>
           {genres.filter((element) => {
             const genre = element.toLowerCase();
             const input = query.toLowerCase();
@@ -34,6 +42,7 @@ export default function SearchDropdown({query, handleChange}){
           .map((genre) => 
             <DropdownRow key = {genre} handleChange={handleChange}>{genre}</DropdownRow>
           )}
-        </Dropdown>
+      </Container>
+    </Dropdown>
     )    
 }
