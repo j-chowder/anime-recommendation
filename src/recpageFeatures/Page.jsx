@@ -1,5 +1,6 @@
 import {styled} from "styled-components"
 import CardContainer from "./Card/CardContainer"
+import Header from "./Header/Header"
 const Container = styled.main`
  display:grid;
  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
@@ -12,7 +13,7 @@ const Container = styled.main`
 export default function Page(){
     return (
         <>
-        
+         <Header />
          <Container>
             <CardContainer />
             <CardContainer />
