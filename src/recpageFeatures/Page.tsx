@@ -1,4 +1,5 @@
-import {styled} from "styled-components"
+import * as React from "react";
+import styled from "styled-components"
 import CardContainer from "./Card/CardContainer"
 import Header from "./Header/Header"
 const Container = styled.main`
