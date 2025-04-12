@@ -18,7 +18,7 @@ export default function InfoSynopsis(){
     return (
         <Wrapper>
             <span style = {{boxSizing: 'border-box'}}>
-                anarosietn aieorsntie arn stoiean ansreitno ariesnt ioearnstieoarns etinaro sietnar ioesntearsontare stoearns tieanrsetinareist aersnt
+                anarosietn aieorsntie arn stoiean ansreitno ariesnt ioearnstieoarns etist aersnt arisntoi aer nsto iranso tinaros ietnraoisn toiearnstei arosent oariens toearn soietnar sieotnoaier nsiotan oirs naseirtnoa risentoia rnst ieoarns tieanrs ieotnaoies ntoairsn toiearnst i oeransietn aoris ntoiearnsietoarns
             </span>
             <Ellipses>
                 ...

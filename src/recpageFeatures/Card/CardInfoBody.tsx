@@ -8,12 +8,13 @@ const Wrapper = styled.div`
  flex-direction:column;
  min-height:0;
  padding:17px;
+ padding-top: 5px;
  position:relative;
 `
 export default function InfoBody(){
     return (
         <Wrapper>
-            <InfoHeader></InfoHeader>
+            <InfoHeader score = {87} rank = {1}></InfoHeader>
             <InfoSynopsis></InfoSynopsis>
         </Wrapper>
     )
