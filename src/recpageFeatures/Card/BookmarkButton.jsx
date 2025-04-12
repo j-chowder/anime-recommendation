@@ -1,20 +1,20 @@
 import * as React from "react";
-import Bookmark from "./star.svg"; 
 import styled from "styled-components";
 
 const Container = styled.div`
  margin-left:auto;
+ margin-top:2px;
  cursor: pointer;
+ display:flex;
+ align-items:center;
 `
-const Image = styled.svg`
- viewbox: 0 0 24 24;
- width: 26px;
- aria-label: "Bookmark";
+const Image = styled.img`
+ width: 24px;
 `
 export default function BookmarkButton(){
     return (
         <Container>
-            <Image src = {Bookmark} alt = 'Bookmark' />
+            <Image alt = 'Bookmark' src = 'src\recpageFeatures\Card\star.svg' />
         </Container>
     )
 }

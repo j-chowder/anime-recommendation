@@ -13,6 +13,7 @@ export default function InfoFooter(){
     return (
         <Wrapper>
             <FooterGenres></FooterGenres>
+            <BookmarkButton></BookmarkButton>
         </Wrapper>
     )
 }
