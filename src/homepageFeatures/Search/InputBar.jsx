@@ -62,7 +62,7 @@ const handleChange = (e) => {
 }
 const search = (formData) => {
   const input = formData.get("s");
-  setGetter(input)
+  setGetter(category, input);
   navigate("/test");
 }
     return (

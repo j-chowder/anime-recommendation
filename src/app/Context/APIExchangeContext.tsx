@@ -7,22 +7,28 @@ interface AnimeObject {
 }
 type Anime = AnimeObject | null
 
+type Category = 'Anime' | 'Genre' | 'User' | '-Select-';
+
+interface requestObject {
+    "category": Category,
+    "value": string | undefined,
+}
 interface ExchangeContextType {
-    request: string;
+    request: requestObject | undefined;
     setAnimes: (animes: Anime[]) => void;
-    setGetter: (url: string) => void;
+    setGetter: (category: Category, value: string) => void;
     response: Anime[] | null;
 }
 
 export const exchangeContext = createContext<ExchangeContextType>({
-    request: '',
+    request: undefined,
     setAnimes: (animes) => {},
-    setGetter: (url) => {},
+    setGetter: (category: Category, value: string) => {},
     response: null  
 })
 
 export default function ExchangeContextProvider({children}: {children: any}){
-    const [request, setRequest] = useState<string>('');
+    const [request, setRequest] = useState<requestObject | undefined>(undefined);
 
     const [response, setResponse] = useState<null | Anime[]>(null);
     
@@ -31,9 +37,13 @@ export default function ExchangeContextProvider({children}: {children: any}){
         setResponse(animes)
     }
 
-    const setGetter = (url: string) => {
-        console.log(`set getter! ${url}`)
-        setRequest(url)
+    const setGetter = (category: Category, value: string) => {
+        console.log(`set getter! category: ${category}, value: ${value} `)
+        if(category == "-Select-" || value === undefined){
+            console.log('uh oh');
+            return; 
+        }
+        setRequest({'category': category, 'value': value})
     }
 
     return (
