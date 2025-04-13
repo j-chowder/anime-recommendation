@@ -5,7 +5,8 @@ import './index.css'
 import App from './app/App.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import Page from './recpageFeatures/Page.js';
-import ErrorPage from './app/ErrorPage.jsx'
+import ErrorPage from './app/ErrorPage.jsx';
+import ExchangeContextProvider from './app/Context/APIExchangeContext';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,8 @@ const router = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ExchangeContextProvider>
+      <RouterProvider router={router} />
+    </ExchangeContextProvider>
   </StrictMode>,
 )

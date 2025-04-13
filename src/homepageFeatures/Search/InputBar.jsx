@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { categoryValueContext } from '../../app/Context/CategoryValueContext.jsx';
+import { exchangeContext } from '../../app/Context/APIExchangeContext.js';
 import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
 import SearchDropdown from './Dropdown/SearchDropdown.jsx';
@@ -35,6 +36,7 @@ const Form = styled.form`
 
 export default function InputBar({defValue = ""}){
   const {category} = useContext(categoryValueContext);
+  const {setGetter} = useContext(exchangeContext)
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
 
@@ -60,7 +62,7 @@ const handleChange = (e) => {
 }
 const search = (formData) => {
   const input = formData.get("s");
-  console.log(input);
+  setGetter(input)
   navigate("/test");
 }
     return (
