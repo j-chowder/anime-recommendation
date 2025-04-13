@@ -1,4 +1,5 @@
-import {useEffect, useState} from 'react'
+import {useContext, useEffect, useState} from 'react'
+import { exchangeContext } from '../../app/Context/APIExchangeContext'
 
 interface Anime {
     'name': string,
@@ -15,10 +16,12 @@ export default function useAnimeData(): Response {
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
+    const {request} = useContext(exchangeContext)
+
     useEffect(() => {
         const fetchData = async (): Promise<Anime[]> => {
             try {
-                const response = await fetch('')
+                const response = await fetch(`https://api.jikan.moe/v4/${request?.category}/${request?.value}`)
 
                 if(!response.ok){
                     throw new Error (`Error: ${response.status}`)
