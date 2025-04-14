@@ -1,4 +1,5 @@
-import {styled} from 'styled-components'
+import * as React from 'react'
+import styled from 'styled-components'
 import CardCover from './CardCover'
 import CardInfo from './CardInfo'
 
@@ -17,11 +18,11 @@ const Card = styled.article`
  height: 265px;
 `
 
-export default function CardContainer(){
+export default function CardContainer({name, image, rank}: {name: string, image: string, rank: number }){
     return (
         <Card>
-         <CardCover />
-         <CardInfo />
+         <CardCover name={name} image={image} />
+         <CardInfo rank={rank} />
         </Card>
     )
 }

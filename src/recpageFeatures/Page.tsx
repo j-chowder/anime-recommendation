@@ -4,6 +4,7 @@ import CardContainer from "./Card/CardContainer"
 import Header from "./Header/Header"
 import useAnimeData from "./API/GetData";
 import ErrorPage from "./ErrorPage/Error";
+import { useParams } from "react-router-dom"
 
 
 const Container = styled.main`
@@ -16,24 +17,21 @@ const Container = styled.main`
 `
 
 export default function Page(){
-    const {animes, loading, error} = useAnimeData()
+    const {category, search} = useParams<string>()
+    console.log(typeof(category), search)
+    const {animes, loading, error} = useAnimeData(category, search)
 
     if (loading) return <p>Loading...</p>;
     if (error) return <ErrorPage />;
 
-    console.table(animes)
-   
     return (
         <>
          <Header />
          <Container>
-            <CardContainer />
-            <CardContainer />
-            <CardContainer />
-            <CardContainer />
-            <CardContainer />
-            <CardContainer />
-            <CardContainer />
+            {animes.slice(0,30)
+            .map((anime, index) => 
+               (<CardContainer key = {anime.name} name = {anime.name} image = {anime.image} rank = {index + 1} />)
+            )}
          </Container>
         </>
     )

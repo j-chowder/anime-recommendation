@@ -1,5 +1,7 @@
+import * as React from "react";
 import styled from "styled-components";
 import CardTitles from "./CardTitles";
+
 const Cover = styled.div`
  cursor: pointer;
  display: flex;
@@ -27,12 +29,12 @@ const Overlay = styled.div`
     font-weight: 600;
 `
 
-export default function CardCover(){
+export default function CardCover({name, image}: {name: string, image: string}){
     return (
         <Cover>
-            <Image src = 'https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx149118-AOQb0xuTssGl.jpg'></Image>
+            <Image src = {image}></Image>
             <Overlay>
-                <CardTitles titles = {["Fire Force asrt ars tars tarst", 'enen no shouboutai', "炎炎ノ消防隊"]}></CardTitles>
+                <CardTitles titles = {[name, , ]}></CardTitles>
             </Overlay>
         </Cover>
     )

@@ -1,3 +1,4 @@
+import * as React from "react";
 import styled from "styled-components";
 import InfoFooter from "./CardInfoFooter";
 import InfoContainer from "./CardInfoScroller";
@@ -9,10 +10,10 @@ const Info = styled.div`
  min-width: 0;
 `
 
-export default function CardInfo(){
+export default function CardInfo({rank}: {rank: number}){
     return (
         <Info>
-            <InfoContainer />
+            <InfoContainer rank = {rank} />
             <InfoFooter />
         </Info>
     )

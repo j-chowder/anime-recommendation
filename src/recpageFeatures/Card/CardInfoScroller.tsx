@@ -8,11 +8,10 @@ const Wrapper = styled.div`
  height: 100%;
  width: calc(100% + 17px);
 `
-export default function InfoContainer(){
+export default function InfoContainer({rank}: {rank: number}){
     return (
         <Wrapper>
-            <InfoBody>
-            </InfoBody>
+            <InfoBody rank = {rank} />
         </Wrapper>
     )
 }
