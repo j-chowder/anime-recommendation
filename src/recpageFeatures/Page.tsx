@@ -15,11 +15,11 @@ const Container = styled.main`
  max-width: 1200px;
  margin: 0;
 `
+type Category = '-select-' | 'anime' | 'genre' | 'user'
 
 export default function Page(){
-    const {category, search} = useParams<string>()
-    console.log(typeof(category), search)
-    const {animes, loading, error} = useAnimeData(category, search)
+    const {category, search} = useParams<{category: Category, search: string}>()
+    const {animes, loading, error} = useAnimeData(category as Category, search as string)
 
     if (loading) return <p>Loading...</p>;
     if (error) return <ErrorPage />;
