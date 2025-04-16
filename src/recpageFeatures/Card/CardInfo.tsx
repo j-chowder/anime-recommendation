@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import InfoFooter from "./CardInfoFooter";
-import InfoContainer from "./CardInfoScroller";
+import InfoContainer from "./CardInfoContainer";
 const Info = styled.div`
  display: grid;
  grid-template-columns: 100%
@@ -10,10 +10,10 @@ const Info = styled.div`
  min-width: 0;
 `
 
-export default function CardInfo({rank}: {rank: number}){
+export default function CardInfo({rank, score}: {rank: number, score: number}){
     return (
         <Info>
-            <InfoContainer rank = {rank} />
+            <InfoContainer rank = {rank} score = {score} />
             <InfoFooter />
         </Info>
     )

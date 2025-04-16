@@ -9,11 +9,11 @@ const normStyling = {
     color: '#213547'
 }
 const EightyStyling = {
-    color: 'seagreen'
+    color: '#8A9A5B'
 }
 const EightyPlusStyling =  {
     color: '#00A86B',
-    fontWeight: '600'
+    fontWeight: '500'
 }
 interface styleObject {
     color: string,
@@ -32,7 +32,7 @@ export default function InfoHeader({score, rank}: {score: number, rank: number})
             return normStyling
         }
     }
-
+    score = Math.round(score * 10) 
     const textStyling = styling()
     
     return (

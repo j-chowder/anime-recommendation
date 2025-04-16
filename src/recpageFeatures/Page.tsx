@@ -22,7 +22,7 @@ export default function Page(){
     const {animes, loading, error} = useAnimeData(category as Category, search as string)
 
     if (loading) return <p>Loading...</p>;
-    if (error) return <ErrorPage />;
+    if (error || animes.length == 0) return <ErrorPage />;
 
     return (
         <>
@@ -30,7 +30,12 @@ export default function Page(){
          <Container>
             {animes.slice(0,30)
             .map((anime, index) => 
-               (<CardContainer key = {anime.name} name = {anime.name} image = {anime.image} rank = {index + 1} />)
+               (<CardContainer key = {anime.name} 
+                name = {anime.name} 
+                image = {anime.image} 
+                rank = {index + 1} 
+                score = {anime.score}
+                />)
             )}
          </Container>
         </>

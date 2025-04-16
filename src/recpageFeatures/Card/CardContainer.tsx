@@ -18,11 +18,11 @@ const Card = styled.article`
  height: 265px;
 `
 
-export default function CardContainer({name, image, rank}: {name: string, image: string, rank: number }){
+export default function CardContainer({name, image, rank, score}: {name: string, image: string, rank: number, score: number }){
     return (
         <Card>
          <CardCover name={name} image={image} />
-         <CardInfo rank={rank} />
+         <CardInfo rank={rank} score = {score} />
         </Card>
     )
 }

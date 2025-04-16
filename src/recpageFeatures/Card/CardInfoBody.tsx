@@ -11,10 +11,10 @@ const Wrapper = styled.div`
  padding-top: 5px;
  position:relative;
 `
-export default function InfoBody({rank}: {rank: number}){
+export default function InfoBody({rank, score}: {rank: number, score: number}){
     return (
         <Wrapper>
-            <InfoHeader score = {87} rank = {rank}></InfoHeader>
+            <InfoHeader score = {score} rank = {rank}></InfoHeader>
             <InfoSynopsis></InfoSynopsis>
         </Wrapper>
     )

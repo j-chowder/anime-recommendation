@@ -3,7 +3,8 @@ import {useEffect, useState} from 'react'
 
 interface Anime {
     'name': string,
-    'image': string
+    'image': string,
+    'score': number,
 }
 interface Response {
     'animes': Anime[],
