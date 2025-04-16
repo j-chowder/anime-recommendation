@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import { TitleText } from "../../homepageFeatures/HomepageHeader/Title";
+import image from "./ErrorReaction.jpg";
 
 const Wrapper = styled.div`
  display:flex;
@@ -27,7 +28,7 @@ export default function ErrorPage(){
     return (
         <Wrapper>
             <Text>Nothing found... try something else!</Text>
-            <Image src = 'src\recpageFeatures\ErrorPage\ErrorReaction.jpg' />
+            <Image src = {image} />
         </Wrapper>
     )
 }

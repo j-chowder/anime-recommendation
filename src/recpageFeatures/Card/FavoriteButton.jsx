@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import star from "./star.svg"; 
 
 const Container = styled.div`
  margin-left:auto;
@@ -26,7 +27,7 @@ export default function FavoriteButton(){
 
     return (
         <Container>
-            <Image alt = 'Bookmark' src = 'src\recpageFeatures\Card\star.svg' onClick ={toggleFavorite} fill='currentColor' />
+            <Image alt = 'Bookmark' src = {star} onClick ={toggleFavorite} fill='currentColor' />
         </Container>
     )
 }
