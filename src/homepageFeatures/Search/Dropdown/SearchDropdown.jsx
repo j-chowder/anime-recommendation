@@ -24,23 +24,33 @@ const Container = styled.div`
 `
 
 
-export default function SearchDropdown({query, handleChange}){
+export default function SearchDropdown({query, autoComplete}){
     const {genres, loading, error} = useGenres();
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>A network error was encountered</p>;
+
+    var input = query.toLowerCase();
+
+    const inputArr = input.split(', ');
+    const len = inputArr.length;
+
+    console.log(`in: ${inputArr}, ${len}`)
+    if(len > 1){ //  ensure autocomplete works with multiple genre searches.
+      input = inputArr[len - 1];
+      input = input.toLowerCase();
+    }
 
     return(
     <Dropdown>
       <Container>
           {genres.filter((element) => {
             const genre = element.toLowerCase();
-            const input = query.toLowerCase();
-            return input && genre.startsWith(input) && genre !== input
+            return input && genre.startsWith(input) && genre !== input;
           })
           .slice(0,5)
           .map((genre) => 
-            <DropdownRow key = {genre} handleChange={handleChange}>{genre}</DropdownRow>
+            <DropdownRow key = {genre} autoComplete={autoComplete}>{genre}</DropdownRow>
           )}
       </Container>
     </Dropdown>

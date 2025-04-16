@@ -5,6 +5,7 @@ import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
 import SearchDropdown from './Dropdown/SearchDropdown.jsx';
 import { useNavigate } from 'react-router-dom';
+
 const Input = styled.input`
     padding: 0.8em;
     color: black;
@@ -36,7 +37,6 @@ const Form = styled.form`
 
 export default function InputBar({defValue = ""}){
   const {category} = useContext(categoryValueContext);
-  const {setGetter} = useContext(exchangeContext)
   const navigate = useNavigate();
   const [query, setQuery] = useState('');
 
@@ -57,12 +57,22 @@ const handleChange = (e) => {
     setQuery(e.target.value);
   }
   catch(error){
-    setQuery(e);
+    
   }
+}
+const autoComplete = (val) => {
+  if(!(query.indexOf(",") > 0)){
+    setQuery(val);
+    return;
+  }
+  const queryArray = query.split(', ');
+  queryArray[queryArray.length - 1] = val; // replace with the autocomplete
+  const input = queryArray.join(", ")
+  setQuery(input);
 }
 const search = (formData) => {
   const input = formData.get("s");
-  navigate(`/${category.toLowerCase()}/${input}`);
+  navigate(`/${category.toLowerCase()}/${input.replace(/,/g, "")}`);
 }
     return (
         <>
@@ -76,23 +86,10 @@ const search = (formData) => {
           </svg>
         </SearchButton>
         </Form> 
-        <SearchDropdown query = {query} handleChange = {handleChange} />
+        <SearchDropdown query = {query} autoComplete = {autoComplete} />
 
         </>
         
     )
     
 }
-// export const searchAction = async ({ request }) => {
-//   console.log("herro" + response)
-//   const data = await request.formData();
-//   const submission = {
-//     search: data.get("s"),
-//     category: value
-//   }
-//   console.log("herro " + submission);
-//   if(submission.search.length < 10){
-//     return {error: 'Message must be over 10 chars long'}
-//   }
-//   return redirect('/test')
-// }

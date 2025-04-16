@@ -18,8 +18,6 @@ export default function useAnimeData(category: Category, search: string): Respon
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
-    
-
     useEffect(() => {
         const fetchData = async (): Promise<Anime[]> => {
             try {

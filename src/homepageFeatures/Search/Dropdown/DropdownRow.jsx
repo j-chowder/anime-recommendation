@@ -14,10 +14,11 @@ outline:none;
 }
 `
 
-export default function DropdownRow({children, handleChange}){
+export default function DropdownRow({children, autoComplete}){
     function handleClick(){
         const value = "" + children;
-        handleChange(value);
+        console.log(`handling autoComplete ${value}`)
+        autoComplete(value);
     }
     return (
         <Row 
