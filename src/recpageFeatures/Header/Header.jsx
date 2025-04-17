@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import InputBar from "../../homepageFeatures/Search/InputBar";
+import FilterButton from "./FilterButton/FilterButton";
 const Container = styled.div`
  background-color: #DECFAC;
  color: #D3D3D3;
@@ -24,6 +25,7 @@ export default function Header(){
             <SearchContainer>
               <InputBar defValue = {"Search something else..."} />
             </SearchContainer>
+            <FilterButton></FilterButton>
         </Container>
     )
 }

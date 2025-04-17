@@ -2,6 +2,8 @@ import * as React from 'react'
 import styled from 'styled-components'
 import CardCover from './CardCover'
 import CardInfo from './CardInfo'
+import { useState, useContext } from 'react'
+import { filterContext } from '../../app/Context/FilterContext'
 
 const Card = styled.article`
  display: inline-grid;
@@ -18,11 +20,25 @@ const Card = styled.article`
  height: 265px;
 `
 
-export default function CardContainer({name, image, rank, score}: {name: string, image: string, rank: number, score: number }){
+
+
+const CardContainer = ({name, image, rank, score}: {name: string, image: string, rank: number, score: number }) => {
+    const [favorited, setFavorited] = useState(false)
+    const {filter} = useContext(filterContext); 
+    
+    const toggleFavorite = () => {
+        setFavorited(!favorited)
+    }
+    if(filter && !favorited){
+        return; 
+    }
+  
     return (
         <Card>
-         <CardCover name={name} image={image} />
-         <CardInfo rank={rank} score = {score} />
+         <CardCover  name={name} image={image}  />
+         <CardInfo rank={rank} score = {score} toggleFavorite={toggleFavorite} favorited={favorited} />
         </Card>
     )
 }
+
+export default CardContainer 

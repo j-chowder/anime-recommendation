@@ -4,7 +4,9 @@ import CardContainer from "./Card/CardContainer"
 import Header from "./Header/Header"
 import useAnimeData from "./API/GetData";
 import ErrorPage from "./ErrorPage/Error";
-import { useParams } from "react-router-dom"
+import { useParams } from "react-router-dom";
+import FilterContextProvider from "../app/Context/FilterContext";
+
 
 
 const Container = styled.main`
@@ -26,8 +28,9 @@ export default function Page(){
 
     return (
         <>
-         <Header />
-         <Container>
+         <FilterContextProvider>
+          <Header />
+           <Container>
             {animes.slice(0,30)
             .map((anime, index) => 
                (<CardContainer key = {anime.name} 
@@ -37,7 +40,8 @@ export default function Page(){
                 score = {anime.score}
                 />)
             )}
-         </Container>
+           </Container>
+         </FilterContextProvider>
         </>
     )
 }

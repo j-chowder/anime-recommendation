@@ -11,11 +11,11 @@ const Wrapper = styled.div`
  margin-bottom: 8px;
 `
 
-export default function InfoFooter(){
+export default function InfoFooter({toggleFavorite, favorited}: {favorited: boolean, toggleFavorite: () => void}){
     return (
         <Wrapper>
             <FooterGenres></FooterGenres>
-            <FavoriteButton></FavoriteButton>
+            <FavoriteButton toggleFavorite={toggleFavorite} favorited = {favorited}></FavoriteButton>
         </Wrapper>
     )
 }
