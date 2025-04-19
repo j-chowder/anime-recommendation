@@ -6,8 +6,7 @@ import useAnimeData from "./API/GetData";
 import ErrorPage from "./ErrorPage/Error";
 import { useParams } from "react-router-dom";
 import FilterContextProvider from "../app/Context/FilterContext";
-
-
+import ResponseContextProvider, { useResponseContext } from "../app/Context/ResponseContext";
 
 const Container = styled.main`
  display:grid;
@@ -21,17 +20,21 @@ type Category = '-select-' | 'anime' | 'genre' | 'user'
 
 export default function Page(){
     const {category, search} = useParams<{category: Category, search: string}>()
-    const {animes, loading, error} = useAnimeData(category as Category, search as string)
+    const {animeData, loading, error} = useAnimeData(category as Category, search as string)
 
     if (loading) return <p>Loading...</p>;
-    if (error || animes.length == 0) return <ErrorPage />;
+    if (error || animeData.length == 0) return <ErrorPage />;
 
+    const {animes, setAnimeData} = useResponseContext();
+    setAnimeData(animeData); 
+    
     return (
         <>
          <FilterContextProvider>
           <Header />
+          <ResponseContextProvider>
            <Container>
-            {animes.slice(0,30)
+            {animeData.slice(0,30)
             .map((anime, index) => 
                (<CardContainer key = {anime.name} 
                 name = {anime.name} 
@@ -41,6 +44,7 @@ export default function Page(){
                 />)
             )}
            </Container>
+          </ResponseContextProvider>
          </FilterContextProvider>
         </>
     )

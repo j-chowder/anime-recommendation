@@ -2,19 +2,23 @@ import {useEffect, useState} from 'react'
 
 
 interface Anime {
-    'name': string,
-    'image': string,
-    'score': number,
+    name: string,
+    score: number,
+    genres: string,
+    image: string,
+    english_name: string,
+    other_name: string,
+    synopsis: string,
 }
 interface Response {
-    'animes': Anime[],
+    'animeData': Anime[],
     'error': string | null,
     'loading': boolean,
 }
 type Category = '-select-' | 'anime' | 'genre' | 'user'
 
 export default function useAnimeData(category: Category, search: string): Response {
-    const [animes, setAnimes] = useState<Anime[]>([]);
+    const [animeData, setAnimeData] = useState<Anime[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -37,7 +41,7 @@ export default function useAnimeData(category: Category, search: string): Respon
 
         fetchData()
         .then(data => {
-            setAnimes(data);
+            setAnimeData(data);
             setLoading(false);
         })
         .catch(err => {
@@ -46,5 +50,5 @@ export default function useAnimeData(category: Category, search: string): Respon
         }) 
         .finally(() => setLoading(false));
     }, []);
-    return {animes, error, loading}
+    return {animeData, error, loading}
 }
