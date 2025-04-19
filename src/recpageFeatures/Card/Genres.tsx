@@ -10,11 +10,14 @@ const Container = styled.div`
  display:flex;
  font-size: 10px;
  font-weight: 700;
- height: 20px;
+ height: 95%;
  text-transform: lowercase;
 `
 
-export default function Genre({children}: {children: any}){
+export default function Genre({children}: {children: string}){
+    if(children.indexOf("_") > 0){
+        children = children.replace("_", " ");
+    }
     return (
      <Container>
       {children}
