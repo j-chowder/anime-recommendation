@@ -14,11 +14,11 @@ const Remainder = styled.span`
  box-sizing: border-box;
 `
 
-export default function InfoSynopsis(){
+export default function InfoSynopsis({children}: {children: string}){
     return (
         <Wrapper>
             <span style = {{boxSizing: 'border-box'}}>
-                anarosietn aieorsntie arn stoiean ansreitno ariesnt ioearnstieoarns etist aersnt arisntoi aer nsto iranso tinaros ietnraoisn toiearnstei arosent oariens toearn soietnar sieotnoaier nsiotan oirs naseirtnoa risentoia rnst ieoarns tieanrs ieotnaoies ntoairsn toiearnst i oeransietn aoris ntoiearnsietoarns
+                {children}
             </span>
             <Ellipses>
                 ...

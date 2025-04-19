@@ -2,6 +2,7 @@ import * as React from "react";
 import styled from "styled-components";
 import InfoHeader from "./CardInfoHeader";
 import InfoSynopsis from "./CardInfoSynopsis";
+import { useResponseContext } from "../../app/Context/ResponseContext";
 
 const Wrapper = styled.div`
  display:flex;
@@ -11,11 +12,14 @@ const Wrapper = styled.div`
  padding-top: 5px;
  position:relative;
 `
-export default function InfoBody({rank, score}: {rank: number, score: number}){
+export default function InfoBody({index}: {index: number}){
+    const {animes} = useResponseContext();
+    const anime = animes[index];
+
     return (
         <Wrapper>
-            <InfoHeader score = {score} rank = {rank}></InfoHeader>
-            <InfoSynopsis></InfoSynopsis>
+            <InfoHeader score = {anime.score} rank = {index + 1}></InfoHeader>
+            <InfoSynopsis>{anime.synopsis}</InfoSynopsis>
         </Wrapper>
     )
 }

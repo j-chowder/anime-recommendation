@@ -15,7 +15,7 @@ export default function InfoContainer({index}: {index:number}){
 
     return (
         <Wrapper>
-            <InfoBody rank = {index + 1} score = {anime.score} />
+            <InfoBody index = {index} />
         </Wrapper>
     )
 }
