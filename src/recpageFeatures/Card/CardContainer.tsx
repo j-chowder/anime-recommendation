@@ -22,10 +22,10 @@ const Card = styled.article`
 
 
 
-const CardContainer = ({name, image, rank, score}: {name: string, image: string, rank: number, score: number }) => {
+const CardContainer = ({index}: {index: number}) => {
     const [favorited, setFavorited] = useState(false)
     const {filter} = useContext(filterContext); 
-    
+     
     const toggleFavorite = () => {
         setFavorited(!favorited)
     }
@@ -35,8 +35,8 @@ const CardContainer = ({name, image, rank, score}: {name: string, image: string,
   
     return (
         <Card>
-         <CardCover  name={name} image={image}  />
-         <CardInfo rank={rank} score = {score} toggleFavorite={toggleFavorite} favorited={favorited} />
+         <CardCover index = {index}  />
+         <CardInfo index = {index} toggleFavorite={toggleFavorite} favorited={favorited} />
         </Card>
     )
 }

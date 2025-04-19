@@ -11,14 +11,14 @@ interface Anime {
     synopsis: string,
 }
 interface Response {
-    'animeData': Anime[],
+    'animes': Anime[],
     'error': string | null,
     'loading': boolean,
 }
 type Category = '-select-' | 'anime' | 'genre' | 'user'
 
 export default function useAnimeData(category: Category, search: string): Response {
-    const [animeData, setAnimeData] = useState<Anime[]>([]);
+    const [animes, setAnimes] = useState<Anime[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -41,7 +41,7 @@ export default function useAnimeData(category: Category, search: string): Respon
 
         fetchData()
         .then(data => {
-            setAnimeData(data);
+            setAnimes(data);
             setLoading(false);
         })
         .catch(err => {
@@ -50,5 +50,5 @@ export default function useAnimeData(category: Category, search: string): Respon
         }) 
         .finally(() => setLoading(false));
     }, []);
-    return {animeData, error, loading}
+    return {animes, error, loading}
 }

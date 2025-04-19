@@ -6,7 +6,8 @@ import useAnimeData from "./API/GetData";
 import ErrorPage from "./ErrorPage/Error";
 import { useParams } from "react-router-dom";
 import FilterContextProvider from "../app/Context/FilterContext";
-import ResponseContextProvider, { useResponseContext } from "../app/Context/ResponseContext";
+import ResponseContextProvider, { responseContext, useResponseContext } from "../app/Context/ResponseContext";
+import { useEffect } from "react";
 
 const Container = styled.main`
  display:grid;
@@ -20,31 +21,30 @@ type Category = '-select-' | 'anime' | 'genre' | 'user'
 
 export default function Page(){
     const {category, search} = useParams<{category: Category, search: string}>()
-    const {animeData, loading, error} = useAnimeData(category as Category, search as string)
-
-    if (loading) return <p>Loading...</p>;
-    if (error || animeData.length == 0) return <ErrorPage />;
-
-    const {animes, setAnimeData} = useResponseContext();
-    setAnimeData(animeData); 
+    const {animes, loading, error} = useAnimeData(category as Category, search as string)
     
+    if (loading) return <p>Loading...</p>;
+    if (error || animes.length == 0) return <ErrorPage />;
+
     return (
         <>
          <FilterContextProvider>
           <Header />
-          <ResponseContextProvider>
+          <responseContext.Provider value = {{animes}}>
            <Container>
-            {animeData.slice(0,30)
+            {animes.slice(0,30)
             .map((anime, index) => 
-               (<CardContainer key = {anime.name} 
-                name = {anime.name} 
-                image = {anime.image} 
-                rank = {index + 1} 
-                score = {anime.score}
+               (<CardContainer 
+                // key = {anime.name} 
+                // name = {anime.name} 
+                // image = {anime.image} 
+                // rank = {index + 1} 
+                // score = {anime.score}
+                index = {index}
                 />)
             )}
            </Container>
-          </ResponseContextProvider>
+          </responseContext.Provider>
          </FilterContextProvider>
         </>
     )

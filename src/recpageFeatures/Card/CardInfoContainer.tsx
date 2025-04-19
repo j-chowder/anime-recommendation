@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import InfoBody from "./CardInfoBody";
+import { useResponseContext } from "../../app/Context/ResponseContext";
 
 const Wrapper = styled.div`
  position: relative;
@@ -8,10 +9,13 @@ const Wrapper = styled.div`
  height: 100%;
  width: calc(100% + 17px);
 `
-export default function InfoContainer({rank, score}: {rank: number, score: number}){
+export default function InfoContainer({index}: {index:number}){
+    const {animes} = useResponseContext();
+    const anime = animes[index];
+
     return (
         <Wrapper>
-            <InfoBody rank = {rank} score = {score} />
+            <InfoBody rank = {index + 1} score = {anime.score} />
         </Wrapper>
     )
 }

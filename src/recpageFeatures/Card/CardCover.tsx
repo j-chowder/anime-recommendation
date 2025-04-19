@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import CardTitles from "./CardTitles";
+import { useResponseContext } from "../../app/Context/ResponseContext";
 
 const Cover = styled.div`
  cursor: pointer;
@@ -29,12 +30,15 @@ const Overlay = styled.div`
     font-weight: 600;
 `
 
-export default function CardCover({name, image}: {name: string, image: string}){
+export default function CardCover({index}: {index: number}){
+    const {animes} = useResponseContext();
+    console.table(animes);
+    const anime = animes[index];
     return (
         <Cover>
-            <Image src = {image}></Image>
+            <Image src = {anime.image}></Image>
             <Overlay>
-                <CardTitles titles = {[name, , ]}></CardTitles>
+                <CardTitles titles = {[anime.name, anime.english_name, anime.other_name]}></CardTitles>
             </Overlay>
         </Cover>
     )

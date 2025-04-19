@@ -10,11 +10,11 @@ const Info = styled.div`
  min-width: 0;
 `
 
-export default function CardInfo({rank, score, favorited, toggleFavorite}: {rank: number, score: number, favorited: boolean, toggleFavorite: () => void}){
+export default function CardInfo({index, favorited, toggleFavorite}: {index: number, favorited: boolean, toggleFavorite: () => void}){
     return (
         <Info>
-            <InfoContainer rank = {rank} score = {score} />
-            <InfoFooter favorited = {favorited} toggleFavorite = {toggleFavorite} />
+            <InfoContainer index = {index} />
+            <InfoFooter index = {index} favorited = {favorited} toggleFavorite = {toggleFavorite} />
         </Info>
     )
 }
