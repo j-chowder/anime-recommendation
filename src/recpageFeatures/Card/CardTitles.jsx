@@ -37,10 +37,10 @@ export default function CardTitles({titles}){
          <MainTitle>{titles[0]}</MainTitle>
 
          <SubTitleContainer> 
-         {typeof(titles[1]) !== 'undefined' &&
+         {titles[1] !== 'UNKNOWN' && titles[1] !== titles[0] && 
           <RomajiTitle>{titles[1]}</RomajiTitle>
          }
-         {typeof(titles[2]) !== 'undefined' && 
+         {titles[2] !== 'UNKNOWN' && titles[2].toLowerCase() !== titles[0].toLowerCase() && 
           <JapaneseTitle>{titles[2]}</JapaneseTitle>
          }
          </SubTitleContainer>
