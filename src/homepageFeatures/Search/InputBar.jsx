@@ -86,7 +86,7 @@ const search = (formData) => {
           </svg>
         </SearchButton>
         </Form> 
-        <SearchDropdown query = {query} autoComplete = {autoComplete} />
+        <SearchDropdown query = {query} autoComplete = {autoComplete} category = {category} />
 
         </>
         
