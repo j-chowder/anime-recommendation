@@ -86,3 +86,49 @@ An issue with this appraoch was that prequels were not based off of **release da
 
 There were also edge cases like "Fullmetal Alchemist" and "Fullmetal Alchemist: Brotherhood" not being related, or "Hunter x Hunter" and "Hunter x Hunter (2011)" being "alternative versions". 
 
+---
+## Data
+
+### Data Acquisition
+
+Most of the data was used from [Anime Dataset 2023](https://www.kaggle.com/datasets/dbdmobile/myanimelist-dataset/data?select=anime-dataset-2023.csv)
+
+#### Genres
+
+On MyAnimeList, 'genres' (categorization systems to denote a particular style or form of a work) are split into three different categories:
+
+1. Genres - broad categories or types of anime
+    - i.e. Romance, Comedy, Action
+2. Themes - specific subject matter, ideas, or messages explored in an anime.
+    - i.e. Iyashikei, CGDCT, Isekai, School
+3. Demographic - target audience and age group
+    - i.e. Kids, Shounen, Seinen, Josei
+
+As the dataset populates its data directly from MyAnimeList, it only included genres, no themes or demographics.
+
+For my purposes, I used [Jikan API](https://jikan.moe/) to get the themes and demographics of each anime.
+
+#### Removing relations
+
+Ultimately, I relied on recursively checking all relations of a franchise using the Jikan API and removing everything but the entry that was the most popular (popularity = amount of people that put it on their lists).
+
+#### Data Cleaning
+
+Beyond simply removing entries with nulls/unknown values, I
+
+- Removed ratings from users with less than 10 ratings in total.
+  - This helps ensure the quality of determinating correlation between users.
+  - Multiple ratings from a user ensures that they are useful pieces of data: trends, patterns, and their metrics (like what rating distinguishes from amazing/great/good) need sufficient sample sizes to be able to properly determine.
+- Removed animes -- and ratings on those animes -- that are below a score of 6.
+  - The mode of the frequency of scores is the range 6.20 - 6.56. It felt inappropriate to recommend anime below that.
+```
+WITH get_users AS (
+SELECT DISTINCT(user_id) FROM ratings
+GROUP BY user_id
+HAVING COUNT(*) < 10
+)
+DELETE FROM ratings WHERE
+ratings.user_id IN (SELECT * FROM get_users)
+```
+
+
