@@ -11,28 +11,36 @@ interface Anime {
     other_name: string,
     synopsis: string,
 }
+interface ContainsObject{
+    'name': string,
+    'similarity': number,
+}
+interface errorResponseObjectType{
+    contains: ContainsObject[],
+    fuzzy: ContainsObject[],
+}
 interface Response {
-    'animes': Anime[],
+    'response': Anime[] | errorResponseObjectType
     'error': string | null,
     'loading': boolean,
 }
 type Category = '-select-' | 'anime' | 'genre' | 'user'
 
 export default function useAnimeData(category: Category, search: string): Response {
-    const [animes, setAnimes] = useState<Anime[]>([]);
+    const [response, setResponse] = useState<Anime[] | errorResponseObjectType>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchData = async (): Promise<Anime[]> => {
+        const fetchData = async (): Promise<Anime[] | errorResponseObjectType> => {
             try {
-                const response = await fetch(`http://127.0.0.1:8000/categories/${category}/${search}`)
+                const resp = await fetch(`http://127.0.0.1:8000/categories/${category}/${search}`)
 
-                if(!response.ok){
-                    throw new Error (`Error: ${response.status}`)
+                if(!resp.ok){
+                    throw new Error (`Error: ${resp.status}`)
                 }
 
-                const data = await response.json();
+                const data = await resp.json();
                 return data.data;
             }
             catch(error) {
@@ -42,7 +50,7 @@ export default function useAnimeData(category: Category, search: string): Respon
 
         fetchData()
         .then(data => {
-            setAnimes(data);
+            setResponse(data);
             setLoading(false);
         })
         .catch(err => {
@@ -51,5 +59,5 @@ export default function useAnimeData(category: Category, search: string): Respon
         }) 
         .finally(() => setLoading(false));
     }, []);
-    return {animes, error, loading}
+    return {response, error, loading}
 }

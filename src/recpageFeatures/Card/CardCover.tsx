@@ -37,6 +37,19 @@ const Link = styled.a`
  flex-direction: column;
  justify-content: flex-end;
 `
+interface Anime {
+    id: number,
+    name: string,
+    score: number,
+    genres: string,
+    image: string,
+    english_name: string,
+    other_name: string,
+    synopsis: string,
+}
+interface okResponseObjectType{
+    animes: Array<Anime>,
+}
 
 export default function CardCover({index}: {index: number}){
     const {animes} = useResponseContext();

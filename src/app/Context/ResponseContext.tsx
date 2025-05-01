@@ -11,27 +11,14 @@ interface Anime{
     other_name: string,
     synopsis: string,
 }
-interface responseObjectType{
-    animes: Anime[],
+interface okResponseObjectType{
+    animes: Array<Anime>,
 }
-export const responseContext = createContext<responseObjectType>({
+
+export const responseContext = createContext<okResponseObjectType>({
     animes: [],
 });
 
-export default function ResponseContextProvider({children}: {children: any}){
-    const [animes, setAnimes] = useState<Anime[]>([]);
-    console.log('hello');
-    const setAnimeData = (animeData: Anime[]) => {
-        console.log(`in: ${animeData}`)
-        setAnimes(animeData);
-    }
-    console.table(animes)
-    return (
-            <responseContext.Provider value = {{animes}}>
-                {children}
-            </responseContext.Provider>
-    )
-}
 
 export function useResponseContext() {
     const context = useContext(responseContext);
