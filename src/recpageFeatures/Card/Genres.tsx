@@ -16,7 +16,7 @@ const Container = styled.div`
 
 export default function Genre({children}: {children: string}){
     if(children.indexOf("_") > 0){
-        children = children.replace("_", " ");
+        children = children.replace(/_/g, " ");
     }
     return (
      <Container>

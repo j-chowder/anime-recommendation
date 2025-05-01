@@ -29,17 +29,27 @@ const Overlay = styled.div`
     width: 100%;
     font-weight: 600;
 `
+const Link = styled.a`
+ display:block;
+ height:100%;
+ width:100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-end;
+`
 
 export default function CardCover({index}: {index: number}){
     const {animes} = useResponseContext();
-    console.table(animes);
     const anime = animes[index];
+    const link: string = `https://myanimelist.net/anime/${anime.id}`
     return (
-        <Cover>
+        <Cover> 
+         <Link key = {anime.name} href={link} target='_blank' rel= 'nofollow noreferrer'>
             <Image src = {anime.image}></Image>
             <Overlay>
                 <CardTitles titles = {[anime.name, anime.english_name, anime.other_name]}></CardTitles>
             </Overlay>
+         </Link>
         </Cover>
     )
 }

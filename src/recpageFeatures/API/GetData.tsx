@@ -2,6 +2,7 @@ import {useEffect, useState} from 'react'
 
 
 interface Anime {
+    id: number,
     name: string,
     score: number,
     genres: string,

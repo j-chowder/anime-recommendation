@@ -5,20 +5,25 @@ const TitleContainer = styled.div`
  flex-direction: column;
  justify-content:start;
  color: white;
- padding:5px;
+ padding:8px;
+ padding-top:1px;
+ padding-bottom: 0;
+ margin-bottom:0;
 `
 const MainTitle = styled.span`
- font-size: 1rem;
- font-family: 'Inter'
+ font-size: .8rem;
+ font-family: 'Inter';
+ padding:0;
+ margin:0;
 `
 const RomajiTitle = styled.span`
- font-size: 8px;
+ font-size: .8rem;
  color: #D3D3D3;
  padding:0;
  margin:0;
 `
 const JapaneseTitle = styled.span`
- font-size: 8px;
+ font-size: .8rem;
  font-family: "Meiryo";
  color: #D3D3D3;
  padding:0;
@@ -29,7 +34,6 @@ const SubTitleContainer = styled.div`
  display:flex;
  flex-direction:column;
  justify-content:start;
- gap: 1px;
 `
 export default function CardTitles({titles}){
     return (

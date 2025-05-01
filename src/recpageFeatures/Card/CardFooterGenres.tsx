@@ -27,7 +27,7 @@ export default function FooterGenres({index}: {index: number}){
     return (
         <Wrapper>
             {genres.map((genre) => 
-             (<Genre>{genre}</Genre>)
+             (<Genre key = {genre}>{genre}</Genre>)
             )}
         </Wrapper>
     )
