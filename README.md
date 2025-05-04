@@ -130,5 +130,12 @@ HAVING COUNT(*) < 10
 DELETE FROM ratings WHERE
 ratings.user_id IN (SELECT * FROM get_users)
 ```
+## Recommendation Algorithm
+
+#### Content-based filtering
+
+
+
+
 
 
