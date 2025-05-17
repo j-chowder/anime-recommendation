@@ -45,6 +45,7 @@ interface errorResponseObjectType{
 }
 
 export default function ErrorPage({alt = undefined}: {alt: errorResponseObjectType | undefined}){
+
     if(alt){
         console.log(alt)
         return (
@@ -55,7 +56,8 @@ export default function ErrorPage({alt = undefined}: {alt: errorResponseObjectTy
                     <AltSearch name = {e.name}></AltSearch>
                 )
                 )}
-                {alt.fuzzy.map((e) => (
+                {alt.fuzzy.filter((e => !(alt.contains.map((alreadyListed) => alreadyListed.name).includes(e.name)))) // preventing dupes b/w contains and fuzzy
+                .map((e) => (
                     <AltSearch name = {e.name}></AltSearch>
                 )
                 )}
