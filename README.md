@@ -134,7 +134,28 @@ ratings.user_id IN (SELECT * FROM get_users)
 
 #### Content-based filtering
 
+## User
 
+### Genres
+
+<details>
+  <summary>Code Block</summary>
+  
+  ```SQL
+  WITH get_num_genres as (
+SELECT REPLACE(genre, ',', '') as genre
+FROM animes,
+unnest(string_to_array(animes.genres, ' ', '')) as genre
+GROUP BY anime_id, genre
+)
+SELECT get_num_genres.genre, 
+ROUND((CAST(COUNT(get_num_genres.genre) AS numeric) / (SELECT COUNT(*) FROM get_num_genres) * 100), 2) as new,
+genre_counts.percentage as old
+FROM get_num_genres JOIN genre_counts ON (get_num_genres.genre = genre_counts.genre)
+GROUP BY get_num_genres.genre, old
+ORDER BY get_num_genres.count DESC
+  ```
+</details>
 
 
 
