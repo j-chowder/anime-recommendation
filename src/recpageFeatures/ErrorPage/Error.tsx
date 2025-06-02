@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { TitleText } from "../../homepageFeatures/HomepageHeader/Title";
 import image from "./ErrorReaction.jpg";
 import AltSearch from "./AltSearch";
+import Search from "../../search/Search";
+import CategoryValueProvider from "../../app/Context/CategoryValueContext";
 
 const Wrapper = styled.div`
  display:flex;
@@ -67,7 +69,10 @@ export default function ErrorPage({alt = undefined}: {alt: errorResponseObjectTy
     }
     return (
         <Wrapper>
-            <Text>Nothing found... try something else!</Text>
+            <Text>Nothing found...</Text>
+            <CategoryValueProvider>
+             <Search defValue = 'Try something else'/>
+            </CategoryValueProvider>
             <Image src = {image} />
         </Wrapper>
     )

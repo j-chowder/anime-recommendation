@@ -1,10 +1,9 @@
 import { useContext, useState } from 'react';
-import { categoryValueContext } from '../../app/Context/CategoryValueContext.jsx';
-import { exchangeContext } from '../../app/Context/APIExchangeContext.js';
 import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
-import SearchDropdown from './Dropdown/SearchDropdown.jsx';
 import { useNavigate } from 'react-router-dom';
+import { categoryValueContext } from '../app/Context/CategoryValueContext.jsx';
+import SearchDropdown from './Dropdown/SearchDropdown.jsx';
 
 const Input = styled.input`
     padding: 0.8em;
@@ -72,7 +71,9 @@ const autoComplete = (val) => {
 }
 const search = (formData) => {
   const input = formData.get("s");
+  console.log(`navigating ${input}, ${category}`)
   navigate(`/${category.toLowerCase()}/${input.replace(/,/g, "")}`);
+  navigate(0); // refreshes the page so that the navigate above works on subsequent searches
 }
     return (
         <>
