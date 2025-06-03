@@ -3,6 +3,7 @@ import FilterButton from "./FilterButton/FilterButton";
 import InputBar from "../../search/InputBar";
 import Search from "../../search/Search";
 import CategoryValueProvider from "../../app/Context/CategoryValueContext";
+import Home from "../../home_icon/Home";
 const Container = styled.div`
  background-color: #DECFAC;
  color: #D3D3D3;
@@ -25,6 +26,7 @@ export default function Header(){
     return (
         
         <Container>
+            <Home />
             <CategoryValueProvider>
              <Search defValue="Search something else..." />
             </CategoryValueProvider>

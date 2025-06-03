@@ -5,6 +5,7 @@ import image from "./ErrorReaction.jpg";
 import AltSearch from "./AltSearch";
 import Search from "../../search/Search";
 import CategoryValueProvider from "../../app/Context/CategoryValueContext";
+import Home from "../../home_icon/Home";
 
 const Wrapper = styled.div`
  display:flex;
@@ -51,6 +52,8 @@ export default function ErrorPage({alt = undefined}: {alt: errorResponseObjectTy
     if(alt){
         console.log(alt)
         return (
+            <>
+            <Home />
             <Wrapper>
                 <Text>Did you mean...</Text>
                 <Container>
@@ -65,9 +68,12 @@ export default function ErrorPage({alt = undefined}: {alt: errorResponseObjectTy
                 )}
                 </Container>
             </Wrapper>
+            </>
         )
     }
     return (
+        <>
+        <Home />
         <Wrapper>
             <Text>Nothing found...</Text>
             <CategoryValueProvider>
@@ -75,5 +81,6 @@ export default function ErrorPage({alt = undefined}: {alt: errorResponseObjectTy
             </CategoryValueProvider>
             <Image src = {image} />
         </Wrapper>
+        </>
     )
 }
