@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import {styled} from 'styled-components';
 import SearchButton from './SearchButton.jsx';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { categoryValueContext } from '../app/Context/CategoryValueContext.jsx';
 import SearchDropdown from './Dropdown/SearchDropdown.jsx';
 
@@ -37,6 +37,7 @@ const Form = styled.form`
 export default function InputBar({defValue = ""}){
   const {category} = useContext(categoryValueContext);
   const navigate = useNavigate();
+  const location = useLocation();
   const [query, setQuery] = useState('');
 
   switch(category){
@@ -73,7 +74,10 @@ const search = (formData) => {
   const input = formData.get("s");
   console.log(`navigating ${input}, ${category}`)
   navigate(`/${category.toLowerCase()}/${input.replace(/,/g, "")}`);
-  navigate(0); // refreshes the page so that the navigate above works on subsequent searches
+  if(location.pathname !== '/'){
+     navigate(0); // refreshes the page so that the navigate above works on subsequent searches
+  }
+ 
 }
     return (
         <>
