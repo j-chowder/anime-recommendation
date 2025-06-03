@@ -6,6 +6,7 @@ import App from './app/App.jsx'
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Page from './recpageFeatures/Page.js';
 import ErrorPage from './app/ErrorPage.jsx';
+import FavContextLayout from './app/Context/FavoriteContext/FavContextLayout'
 
 const router = createBrowserRouter([
   {
@@ -15,9 +16,15 @@ const router = createBrowserRouter([
    
   },
   {
-    path: "/:category/:search",
-    element: <Page />,
+    element: <FavContextLayout/>,
+    children: [
+    {
+     path: "/:category/:search",
+     element: <Page />,
+    },
+    ]
   },
+  
 
 ])
 createRoot(document.getElementById('root') as HTMLElement).render(

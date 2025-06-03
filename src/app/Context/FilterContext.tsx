@@ -16,7 +16,7 @@ export default function FilterContextProvider({children}: {children: any}){
     const toggleFilter = () => {
         setFilter(!filter);
     }
-
+    
     return (
         <filterContext.Provider value = {{filter, toggleFilter}}>
             {children}

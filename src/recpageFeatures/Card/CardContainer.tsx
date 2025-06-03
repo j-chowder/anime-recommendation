@@ -4,6 +4,7 @@ import CardCover from './CardCover'
 import CardInfo from './CardInfo'
 import { useState, useContext } from 'react'
 import { filterContext } from '../../app/Context/FilterContext'
+import { useFavoriteContext } from '../../app/Context/FavoriteContext/FavoriteContext'
 
 const Card = styled.article`
  display: inline-grid;
@@ -25,12 +26,22 @@ const Card = styled.article`
 const CardContainer = ({index}: {index: number}) => {
     const [favorited, setFavorited] = useState(false)
     const {filter} = useContext(filterContext); 
+    const {incFavoritedCount, decFavoritedCount}= useFavoriteContext();
      
     const toggleFavorite = () => {
+        if(favorited){
+            decFavoritedCount();
+        }
+        else{
+            incFavoritedCount();
+        }
+
         setFavorited(!favorited)
+
     }
+    
     if(filter && !favorited){
-        return; 
+        return (null); 
     }
   
     return (

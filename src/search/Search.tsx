@@ -18,6 +18,6 @@ export default function Search({defValue}: {defValue?: string }){
             <DropDown />
             <InputBar defValue={defValue} />
         </SearchWrapper>
-    )    
+    )
 }
 

@@ -4,35 +4,42 @@ import InputBar from "../../search/InputBar";
 import Search from "../../search/Search";
 import CategoryValueProvider from "../../app/Context/CategoryValueContext";
 import Home from "../../home_icon/Home";
-const Container = styled.div`
+
+const HeaderContainer = styled.div`
  background-color: #DECFAC;
  color: #D3D3D3;
  height: 150px;
  width: 100%;
- padding-top: 20px;
  margin-bottom: 20px;
  display:flex;
+ flex-direction: column;
+ top: 0;
+ z-index: 100%;
 `
-const SearchContainer = styled.div`
-display:flex;
-flex-direction:column;
-margin: 0 auto;
-margin-bottom: 5px;
-margin-top:auto;
+const HomeWrapper = styled.div`
+ margin-left: 5px;
+ margin-top: 5px;
+ display: flex;
+ align-items: start; 
+ gap: 4px;
+ flex-direction: row;
 `
-
 
 export default function Header(){
     return (
         
-        <Container>
-            <Home />
+        <HeaderContainer>
+            <HomeWrapper>
+                <Home />
+                <FilterButton />
+            </HomeWrapper>
+
             <CategoryValueProvider>
              <Search defValue="Search something else..." />
             </CategoryValueProvider>
             
-            <FilterButton></FilterButton>
-        </Container>
+            
+        </HeaderContainer>
         
     )
 }
