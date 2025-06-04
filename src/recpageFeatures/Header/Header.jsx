@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import FilterButton from "./FilterButton/FilterButton";
+import FilterButton from "./FilterButton";
 import InputBar from "../../search/InputBar";
 import Search from "../../search/Search";
 import CategoryValueProvider from "../../app/Context/CategoryValueContext";
 import Home from "../../home_icon/Home";
+import Github from './Github'
 
 const HeaderContainer = styled.div`
  background-color: #DECFAC;
@@ -32,6 +33,7 @@ export default function Header(){
             <HomeWrapper>
                 <Home />
                 <FilterButton />
+                <Github />
             </HomeWrapper>
 
             <CategoryValueProvider>
