@@ -6,7 +6,7 @@ export const useGenres = () => {
     const [genres, setGenres] = useState([]);
   
   useEffect(() => {
-    fetch("https://api.jikan.moe/v4/genres/anime")
+    fetch("http://127.0.0.1:8000/genres")
     .then((response) => {
       if(response.status >= 400){
         throw new Error("server error");
@@ -16,9 +16,7 @@ export const useGenres = () => {
     })
     .then((response) => {
       console.log(response);
-      const genreNames = response.data.map((obj) => {
-        return obj.name;
-      } )
+      const genreNames = response.data
       console.log(genreNames);
       setGenres(genreNames);
     })

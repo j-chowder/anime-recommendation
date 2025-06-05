@@ -71,9 +71,29 @@ const autoComplete = (val) => {
   setQuery(input);
 }
 const search = (formData) => {
-  const input = formData.get("s");
+  let input = formData.get("s");
   console.log(`navigating ${input}, ${category}`)
-  navigate(`/${category.toLowerCase()}/${input.replace(/,/g, "")}`);
+  const cutOffIndex = input.lastIndexOf('/')
+
+  if(cutOffIndex !== -1){
+    if(category === "User"){
+      console.log(`old: ${input}`)
+      input = input.substring(cutOffIndex + 1) // on the case of inputting a link to profile
+      console.log(`new: ${input}`)
+    }
+    else{
+      console.log(`old: ${input}`)
+      input = input.replaceAll("/", '')
+    console.log(`new: ${input}`)
+    }
+  }
+
+  if(input === ''){
+    navigate('/Error')
+  }
+  else{
+    navigate(`/${category.toLowerCase()}/${input.replace(/,/g, "")}`);
+  }
   if(location.pathname !== '/'){
      navigate(0); // refreshes the page so that the navigate above works on subsequent searches
   }
