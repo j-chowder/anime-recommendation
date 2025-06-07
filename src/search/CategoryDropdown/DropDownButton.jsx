@@ -6,10 +6,11 @@ const Button = styled.button`
   border-radius: 4px;
   font-weight:bold; 
   color:white; 
-  background-color:gray;
+  background-color:#564c4D;
   display:flex;
   align-items:center; 
   gap:15px;
+  font-family: Garamond;
 `
 
 export default function DropDownButton({open, toggleOpen}){

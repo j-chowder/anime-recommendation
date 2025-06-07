@@ -3,11 +3,12 @@ import styled from "styled-components"
 import CardContainer from "./Card/CardContainer"
 import Header from "./Header/Header"
 import useAnimeData from "./API/GetData";
-import ErrorPage from "./ErrorPage/Error";
+import RecErrorPage from "./ErrorPage/Error";
 import { useParams } from "react-router-dom";
 import FilterContextProvider from "../app/Context/FilterContext";
 import { responseContext } from "../app/Context/ResponseContext";
 import FilterResponse from "./FilterResponse";
+import RecText from "./RecText";
 
 const Container = styled.main`
  display:grid;
@@ -70,12 +71,12 @@ export default function Page(){
     if (loading) return <p>Loading...</p>;
 
     if("fuzzy" in response){
-        return <ErrorPage alt = {response as errorResponseObjectType} />
+        return <RecErrorPage alt = {response as errorResponseObjectType} />
     }
 
     const animes: Anime[] = response as Anime[]
 
-    if (error || animes.length == 0) return <ErrorPage alt = {undefined} />;
+    if (error || animes.length == 0) return <RecErrorPage />;
     
 
 
@@ -84,6 +85,7 @@ export default function Page(){
         <>
          <FilterContextProvider>
           <Header />
+          <RecText category = {category as Category} search = {search as string}/>
           <responseContext.Provider value = {{animes}}>
            <Container>
             {animes.slice(0, cardcount)

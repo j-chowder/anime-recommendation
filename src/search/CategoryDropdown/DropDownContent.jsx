@@ -8,6 +8,8 @@ export const Content = styled.div`
    border-color:gray;
    background-color:white;
    z-index:20;
+   font-family: Garamond;
+   font-size: 1rem;
 `
 
 export default function DropDownContent({open, children}){

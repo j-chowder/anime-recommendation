@@ -47,7 +47,7 @@ interface errorResponseObjectType{
     fuzzy: ContainsObject[],
 }
 
-export default function ErrorPage({alt = undefined}: {alt: errorResponseObjectType | undefined}){
+export default function RecErrorPage({alt}: {alt?: errorResponseObjectType | undefined}){
 
     if(alt){
         console.log(alt)

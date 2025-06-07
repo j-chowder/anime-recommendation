@@ -7,6 +7,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import Page from './recpageFeatures/Page.js';
 import ErrorPage from './app/ErrorPage.jsx';
 import FavContextLayout from './app/Context/FavoriteContext/FavContextLayout'
+import RecErrorPage from './recpageFeatures/ErrorPage/Error'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
      element: <Page />,
     },
     ]
+  },
+  {
+    path: "/Error",
+    element: <RecErrorPage />
   },
   
 
