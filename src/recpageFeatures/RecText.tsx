@@ -40,7 +40,7 @@ export default function RecText({category, search}: {category: string, search: s
                     break;
                 }
             }
-            if(index === -1){
+            if(index === -1){ // to account for the case above where end of the string is reached.
                 inputGenres.push(input.substring(0))
                 break; 
             }

@@ -28,6 +28,7 @@ interface errorResponseObjectType{
     contains: ContainsObject[],
     fuzzy: ContainsObject[],
 }
+type errorResponse = errorResponseObjectType | -1
 
 interface Anime {
     id: number,
@@ -69,8 +70,11 @@ export default function Page(){
     }, [cardcount]);
     
     if (loading) return <p>Loading...</p>;
+    if(typeof(response) == 'number'){ // case where response == -1 (when user animelist is empty)
+        return <RecErrorPage alt = {response} />
+    }
 
-    if("fuzzy" in response){
+    if("fuzzy" in (response as errorResponseObjectType)){
         return <RecErrorPage alt = {response as errorResponseObjectType} />
     }
 

@@ -6,6 +6,7 @@ import AltSearch from "./AltSearch";
 import Search from "../../search/Search";
 import CategoryValueProvider from "../../app/Context/CategoryValueContext";
 import Home from "../../home_icon/Home";
+import catConfused from '../../assets/confusedError.jpg';
 
 const Wrapper = styled.div`
  display:flex;
@@ -47,9 +48,20 @@ interface errorResponseObjectType{
     fuzzy: ContainsObject[],
 }
 
-export default function RecErrorPage({alt}: {alt?: errorResponseObjectType | undefined}){
+export default function RecErrorPage({alt}: {alt?: errorResponseObjectType | -1 | undefined}){
 
-    if(alt){
+    if(alt === -1){
+        return (
+            <>
+            <Home />
+            <Wrapper style = {{'gap': '20px', 'margin-top': '10px'}}>
+                <Container style = {{'font-size': '2rem'}}>Not enough anime on record to be able to recommend by user.</Container>
+                <img src = {catConfused} alt = "confused" height='750' />
+            </Wrapper>
+            </>
+        )
+    }
+    else if(alt){
         console.log(alt)
         return (
             <>
