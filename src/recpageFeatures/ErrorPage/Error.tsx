@@ -54,8 +54,8 @@ export default function RecErrorPage({alt}: {alt?: errorResponseObjectType | -1 
         return (
             <>
             <Home />
-            <Wrapper style = {{'gap': '20px', 'margin-top': '10px'}}>
-                <Container style = {{'font-size': '2rem'}}>Not enough anime on record to be able to recommend by user.</Container>
+            <Wrapper style = {{'gap': '20px', 'marginTop': '10px'}}>
+                <Container style = {{'fontSize': '2rem'}}>Not enough anime on record to be able to recommend by user.</Container>
                 <img src = {catConfused} alt = "confused" height='750' />
             </Wrapper>
             </>
