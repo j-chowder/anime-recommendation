@@ -1,4 +1,5 @@
 import {styled} from 'styled-components'
+import HomeImage from "../../assets/HomeImage.png"
 
 const Image = styled.img`
 border-top:solid; 
@@ -8,7 +9,7 @@ height: auto;
 `
 export default function TitleImage(){
     return (
-      <Image src = "./src/assets/Picture2.png" />
+      <Image src = {HomeImage} />
     )
     
 }
