@@ -1,5 +1,5 @@
 import * as React from "react";
-import styled from "styled-components"
+import { styled } from "styled-components";
 import CardContainer from "./Card/CardContainer"
 import Header from "./Header/Header"
 import useAnimeData from "./API/GetData";
