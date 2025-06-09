@@ -28,7 +28,6 @@ interface errorResponseObjectType{
     contains: ContainsObject[],
     fuzzy: ContainsObject[],
 }
-type errorResponse = errorResponseObjectType | -1
 
 interface Anime {
     id: number,

@@ -19,8 +19,10 @@ interface errorResponseObjectType{
     contains: ContainsObject[],
     fuzzy: ContainsObject[],
 }
+type errorResponse = errorResponseObjectType | -1
+
 interface Response {
-    'response': Anime[] | errorResponseObjectType
+    'response': Anime[] | errorResponse
     'error': string | null,
     'loading': boolean,
 }
