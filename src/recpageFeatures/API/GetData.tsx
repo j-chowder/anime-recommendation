@@ -36,7 +36,7 @@ export default function useAnimeData(category: Category, search: string): Respon
     useEffect(() => {
         const fetchData = async (): Promise<Anime[] | errorResponseObjectType> => {
             try {
-                const resp = await fetch(`http://127.0.0.1:8000/categories/${category}/${search}`)
+                const resp = await fetch(`${BACKEND_ORIGIN}/categories/${category}/${search}`)
 
                 if(!resp.ok){
                     throw new Error (`Error: ${resp.status}`)
