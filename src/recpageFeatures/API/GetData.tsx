@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-
+import { BACKEND_ORIGIN } from '../../search/APIs/useGenre'
 
 interface Anime {
     id: number,
@@ -27,6 +27,7 @@ interface Response {
     'loading': boolean,
 }
 type Category = '-select-' | 'anime' | 'genre' | 'user'
+
 
 export default function useAnimeData(category: Category, search: string): Response {
     const [response, setResponse] = useState<Anime[] | errorResponseObjectType>([]);
