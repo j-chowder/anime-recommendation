@@ -28,6 +28,7 @@ interface Response {
 }
 type Category = '-select-' | 'anime' | 'genre' | 'user'
 
+
 export default function useAnimeData(category: Category, search: string): Response {
     const [response, setResponse] = useState<Anime[] | errorResponseObjectType>([]);
     const [error, setError] = useState<string | null>(null);
@@ -36,7 +37,7 @@ export default function useAnimeData(category: Category, search: string): Respon
     useEffect(() => {
         const fetchData = async (): Promise<Anime[] | errorResponseObjectType> => {
             try {
-                const resp = await fetch(`http://127.0.0.1:8000/categories/${category}/${search}`)
+                const resp = await fetch(`${import.meta.env.VITE_BACKEND_ORIGIN}/categories/${category}/${search}`)
 
                 if(!resp.ok){
                     throw new Error (`Error: ${resp.status}`)

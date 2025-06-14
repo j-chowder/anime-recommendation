@@ -6,7 +6,7 @@ export const useGenres = () => {
     const [genres, setGenres] = useState([]);
   
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/genres")
+    fetch(`${import.meta.env.VITE_BACKEND_ORIGIN}/genres`)
     .then((response) => {
       if(response.status >= 400){
         throw new Error("server error");
