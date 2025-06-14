@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react'
-
+import { BACKEND_ORIGIN } from '../../search/APIs/useGenre'
 
 interface Anime {
     id: number,
@@ -37,7 +37,7 @@ export default function useAnimeData(category: Category, search: string): Respon
     useEffect(() => {
         const fetchData = async (): Promise<Anime[] | errorResponseObjectType> => {
             try {
-                const resp = await fetch(`${import.meta.env.VITE_BACKEND_ORIGIN}/categories/${category}/${search}`)
+                const resp = await fetch(`${BACKEND_ORIGIN}/categories/${category}/${search}`)
 
                 if(!resp.ok){
                     throw new Error (`Error: ${resp.status}`)

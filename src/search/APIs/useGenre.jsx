@@ -1,12 +1,14 @@
 import {useState, useEffect} from 'react';
 
+export const BACKEND_ORIGIN = import.meta.env.VITE_BACKEND_ORIGIN
+
 export const useGenres = () => {   
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
     const [genres, setGenres] = useState([]);
   
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_BACKEND_ORIGIN}/genres`)
+    fetch(`${BACKEND_ORIGIN}/genres`)
     .then((response) => {
       if(response.status >= 400){
         throw new Error("server error");
