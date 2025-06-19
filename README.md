@@ -20,16 +20,23 @@ The user can choose between three categories to be recommended by:
 ![Image](https://github.com/user-attachments/assets/68772b99-e5ba-4818-944f-db4b22d93ed9)
 
 ## Made With
-* React framework and Typescript
-* FastAPI framework and Python
-	* Libraries include
-		* Pandas
-		* NumPy
-		* SQLAlchemy
-		* Psycopg2
-		* sklearn
-		* ... and more.
-* PostgreSQL database.
+
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-306998?logo=python&logoColor=white)
+![psycopg](https://img.shields.io/badge/psycopg-green?logo=psycopg)
+![Postgres](https://img.shields.io/badge/postgres-%23316192.svg?style=for-the-badge&logo=postgresql&logoColor=white)
+
+
+>[!NOTE]
+>The code for the backend can be found in a [separate repository](https://github.com/j-chowder/anime-recommendation-backend).
 
 ## Data 
 
