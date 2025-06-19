@@ -1,4 +1,7 @@
 ## About
+
+![Image](https://github.com/user-attachments/assets/cbd72943-bc51-4245-b003-ef754c926cfb)
+
 Anirec is a full-stack project that utilizes item-to-item collaborative and content-based filtering to recommend anime.
 
 The user can choose between three categories to be recommended by:
@@ -10,9 +13,9 @@ The user can choose between three categories to be recommended by:
 * User
 	* Input a MyAnimeList profile and receive tailored recommendations that consider the user's preferred genres and highest scored anime.
 
-![Image](https://github.com/user-attachments/assets/cbd72943-bc51-4245-b003-ef754c926cfb)
 
-![Image](https://github.com/user-attachments/assets/f1075885-b65c-4add-895c-9c7bd3f01a84)
+
+![Image](https://github.com/user-attachments/assets/3dff6239-6950-49c4-bdba-f935b5b07e0e)
 
 ![Image](https://github.com/user-attachments/assets/68772b99-e5ba-4818-944f-db4b22d93ed9)
 
@@ -217,11 +220,11 @@ Out: np.float64(0.0)
 
 MyAnimeList holds a disproportionately large percentage of `Kids` and `Music` genres. (~9% and 6.5% of the total genres consist of `Kids` and `Music` respectively).
 
-Below is a visual of the distribution (in percentage) of genres. 
+Below is a visual of the distribution (in frequency percentage) of genres. 
 * The orange represents the distribution of genres for all anime currently registered on MyAnimeList.
 * The blue represents the distribution of genres for all anime in my `anime` dataset AFTER all the preprocessing.
 
-((FILL NEW_VS_OLD IMAGE)
+![Image](https://github.com/user-attachments/assets/ea07db26-5d4e-439f-83a2-af2617974156)
 
 From the graph, it can be concluded that MyAnimeList has disproportionately more anime revolving around `Kids` and `Music` genres, and slightly more on  `Anthropomorphic` and `Educational` genres, than what should be the case.
 
@@ -286,7 +289,7 @@ How a person rates an anime is subjective and often whimsical. More importantly,
 
 Therefore, it is hard to determine similarity from user to user strictly based off of how they rate the same anime -- two people who like an anime the same amount might score it differently because one is stricter with their rating, while the other might be more generous.
 
-Though variance is low, it will still affect values from the cosine similarity algorithm. To minimize the effects, I attempted to "standardize" ratings with respect to a person's relative metric/scale of how they score. This would ensure that the similarity calculation reflects the **relative preferences** of users rather than their **rating tendencies**. (DETAILS IN FILL)
+Though variance is low, it will still affect values from the cosine similarity algorithm. To minimize the effects, I attempted to "standardize" ratings with respect to a person's relative metric/scale of how they score. This would ensure that the similarity calculation reflects the **relative preferences** of users rather than their **rating tendencies**. (See [more](#model-building))
 
 ---
 ## Modeling
