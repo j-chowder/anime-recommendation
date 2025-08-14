@@ -572,7 +572,7 @@ Using the all anime dataset, I
 
 **Recommending**
 
-The recommend anime are the top 100 anime with the highest cumulative value from adding the anime's
+The recommended anime are the top 100 anime with the highest cumulative value from adding the anime's
 1. the overall score × 0.40
 2. the user-rating similarity × 1.2
 3. the genre similarity
